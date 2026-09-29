@@ -26,7 +26,9 @@ user can call the RPC directly and retroactively add or remove their own vote on
 
 ## Running the PoC
 
-1. Log in on devhunt.org and export the cookies (same format as `devhunt.org.cookies.json`: JSON array containing the `sb-*` cookie)
+1. Log in on devhunt.org and export the cookies with the Chrome extension
+   [Export Cookie JSON file for Playwright](https://chromewebstore.google.com/detail/export-cookie-json-file-f/nmckokihipjgplolmcmjakknndddifde)
+   (JSON array; the PoC only reads the `sb-*-auth-token` cookie and extracts the access token from it)
 2. Then:
 
 ```bash
@@ -41,6 +43,10 @@ cd devhunt-poc
 
 The default target is the winner of the most recent **closed** week — the realistic attack
 scenario (flipping a historical ranking).
+
+> **Security note:** the exported cookie file contains the live session (access **and**
+> refresh token). Delete it after the run, and log out (or revoke the session in the
+> Supabase dashboard) if the file ever left your machine.
 
 ## Expected output
 
